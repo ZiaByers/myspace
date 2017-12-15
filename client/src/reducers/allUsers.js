@@ -6,3 +6,5 @@ const allUsers = (state = [], action) => {
       return state
   }
 }
+
+export default allUsers

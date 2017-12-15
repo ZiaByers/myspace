@@ -3,19 +3,18 @@ import { Card, Image, Button, Segment } from 'semantic-ui-react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import { setHeaders } from '../actions/headers'
+import { Link } from 'react-router-dom'
 
 class User extends React.Component {
   state = { user: { id: 0, email: '', name: '', nickname: '', friends: [] }, friended: false }
 
   componentDidMount() {
-    const { id } = this.props
-    axios.get(`/api/users/${id}`)
-      .then( res => {
-        this.setState({ user: res.data })
-        if( this.props.userFriends.includes(res.data.id) )
-          this.setState({ friended: true })
-      })
-      .catch( err => console.log(err) )
+    const { user, userFriends } = this.props
+    let friended = false
+    if(userFriends)
+      if(userFriends.includes(user.id))
+        friended = true
+    this.setState({ user, friended})
   }
 
   handleFriendAdd = () => {
@@ -63,13 +62,15 @@ class User extends React.Component {
 
   render() {
     const { isAuthenticated } = this.props
-    const { email, name, nickname, friends } = this.state.user
+    const { id, email, name, nickname, friends } = this.state.user
     return(
       <Card>
         <Card.Content>
           <Image floated='left' size='tiny' src={`https://robohash.org/${name}`} />
           <Card.Header>
-            {name || email}
+            <Link to={`/userpage/${id}`} >
+              {name || email}
+            </Link>
           </Card.Header>
           <Card.Meta>
             Friends: { friends.length }

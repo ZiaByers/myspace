@@ -14,7 +14,7 @@ class Home extends Component {
   }
 
   render() {
-    const users = [1,2,3]
+    const { users } = this.props
 
     return (
       <Segment basic>
@@ -23,7 +23,7 @@ class Home extends Component {
           {
             users.map( user => {
               if(this.props.isAuthenticated !== user.id)
-                return <User id={user.id} />
+                return <User id={user.id} user={user}/>
             })
           }
         </Card.Group>
