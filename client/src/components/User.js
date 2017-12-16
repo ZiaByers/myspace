@@ -68,7 +68,7 @@ class User extends React.Component {
         <Card.Content>
           <Image floated='left' size='tiny' src={`https://robohash.org/${name}`} />
           <Card.Header>
-            <Link to={`/userpage/${id}`} >
+            <Link to={`/user/${id}`} >
               {name || email}
             </Link>
           </Card.Header>
