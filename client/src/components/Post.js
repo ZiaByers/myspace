@@ -21,7 +21,7 @@ class Post extends React.Component {
       <Segment basic>
         <Header as='h2'>{title}</Header>
         <Segment>{body}</Segment>
-        <Segment basic secondary compact>
+        <Segment basic secondary compact floated='right'>
           <Segment basic>Created on: {createdAt}</Segment>
           <Segment basic>Last update: {updatedAt}</Segment>
         </Segment>

@@ -14,7 +14,9 @@ class NavBar extends Component {
           <Link to='/friends'>
             <Menu.Item name='My Friends'/>
           </Link>
-          <Menu.Item name='My Profile'/>
+          <Link to='/profile'>
+            <Menu.Item name='My Profile'/>
+          </Link>
           <Menu.Item
             name='Logout'
             onClick={() => dispatch(handleLogout(history))}

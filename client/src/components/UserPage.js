@@ -12,7 +12,12 @@ class UserPage extends React.Component {
   state = { user: { id: 0, name: '', nickname: '', email: '', image: ''}, posts: []}
 
   componentDidMount() {
-    const { id } = this.props.match.params
+    let id = 0
+    if(this.props){
+      id = this.props.id
+    } else {
+      id = this.props.match.params.id
+    }
     axios.get(`/api/users/${id}/posts`)
       .then( res => {
         this.setState({ ...this.state, posts: res.data })
@@ -21,7 +26,11 @@ class UserPage extends React.Component {
   }
 
   getUser = () => {
-    const { id } = this.props.match.params
+    let id = 0
+    if(this.props)
+      id = this.props.id
+    else
+      id = this.props.match.params.id
     axios.get(`/api/users/${id}`)
       .then( res => {
         const { posts } = this.state

@@ -11,6 +11,7 @@ import FetchUser from './FetchUser'
 import Friends from './Friends'
 import UserPage from './UserPage'
 import Post from './Post'
+import Profile from './Profile'
 import { Switch, Route } from 'react-router-dom'
 import { Segment } from 'semantic-ui-react'
 
@@ -26,6 +27,7 @@ class App extends Component {
             <ProtectedRoute exact path='/friends' component={Friends} />
             <ProtectedRoute exact path='/user/:id' component={UserPage} />
             <ProtectedRoute exact path='/user/:userId/post/:id' component={Post} />
+            <ProtectedRoute exact path='/profile' component={Profile} />
             <AuthRoute exact path='/login' component={Login} />
             <AuthRoute exact path='/register' component={Register} />
             <Route component={NoMatch} />
